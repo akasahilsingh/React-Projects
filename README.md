@@ -6,19 +6,19 @@ A collection of small React projects to practice and showcase core React concept
 
 ## 🚀 Projects Included
 
-### 1. 🎨 [Color Picker](./Color Picker)
+### 1. 🎨 [Color Picker](./Color%20Picker)
 - **Description:** Pick a color and update the background dynamically.  
 - **Concepts used:** `useState`, controlled input, inline styling.  
 
 ---
 
-### 2. 📇 [Reusable Card Component](./Card Component)
+### 2. 📇 [Reusable Card Component](./Card%20Component)
 - **Description:** A reusable `Card` component that displays user profiles (name, title, and bio).  
 - **Concepts used:** Props, mapping lists, reusable components, CSS flexbox, responsive design.  
 
 ---
 
-### 3. 👁️ [Toggle Visibility](./Toggle Visibility)
+### 3. 👁️ [Toggle Visibility](./Toggle%20Visibility)
 - **Description:** A simple toggle button to show/hide a message.  
 - **Concepts used:** `useState`, conditional rendering, event handling.  
 
