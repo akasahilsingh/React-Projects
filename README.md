@@ -24,6 +24,9 @@ A collection of small React projects to practice and showcase core React concept
 
 ---
 
+## ➕ [And Many More...](https://github.com/akasahilsingh/React-Projects)
+
+---
 
 ## 🛠️ Tech Stack
 - [React 18](https://react.dev/) (via CDN + Babel for JSX)
