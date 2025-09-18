@@ -1,40 +1,84 @@
-const { useState } = React;
+const { useState, useEffect } = React;
 
 export function Board() {
 
-  const [cross, setCross] = useState('');
-  const [chance, setChance] = useState('');
+  const [board, setBoard] = useState(['','','','','','','','','']);
+  const [chance, setChance] = useState('X');
+  const [isDisabled, setIsDisabled] = useState(false);
+  const [isDraw, setIsDraw] = useState(false);
 
-  const gameLogic = () => {
-      if(chance === '') {
-        return setChance('X')
+  
+  const winningPattern = () => {
+    const winningArray = [
+      [0,1,2],
+      [3,4,5],
+      [6,7,8],
+      [0,4,8],
+      [2,4,6],
+      [0,3,6],
+      [1,4,7],
+      [2,5,8]
+    ]
+    for(let i of winningArray) {
+       const [a,b,c] = i;
+  if(board[a] === board[b] && board[b]== board[c] && board[a]!='') {
+     return board[a];
+     
+  } 
+     
+  }
+     return null
+  }
+
+const winner = winningPattern();
+
+useEffect(()=> {
+  if(winner) {
+    setIsDisabled(true);
+  } else if(board.every(cell => cell!=='')) {
+   setIsDraw(true);
+   setIsDisabled(true);
+  }
+},[winner, board])
+
+
+  
+  const gameLogic = (index) => {
+      if(board[index] === '') {
+        const newBoard = [...board]
+        newBoard[index] = chance;
+        setBoard(newBoard);
+        setChance(chance === 'X' ? 'O': 'X')
       }
-      else if(chance === 'X') {
-        return setChance('O')
-      }
-      else return setChance('X')
+      
   }
 
   const resetGame = () => {
-    setChance('');
+     
+    setBoard(['','','','','','','','','']);
+    setChance('X');
+    setIsDisabled(false);
+    setIsDraw(false);
     
   }
 
   return (
     <div className='container'>
+    <h1 className="heading">Tic-Tac-Toe</h1>
+     <p className="info">
+     {winner ? `Winner: ${winner}` 
+     : isDraw
+     ? "It's a Draw"
+     : `Next Player: ${chance}`}
+     </p>
     <div className='board'>
-    <button className='square square1' onClick={()=> gameLogic()}>{chance}</button>
-    <button className='square square2' onClick={()=> gameLogic()}>{chance}</button>
-    <button className='square square3' onClick={()=> gameLogic()}>{chance}</button>
-    <button className='square square4' onClick={()=> gameLogic()}>{chance}</button>
-    <button className='square square5' onClick={()=> gameLogic()}>{chance}</button>
-    <button className='square square6' onClick={()=> gameLogic()}>{chance}</button>
-    <button className='square square7' onClick={()=> gameLogic()}>{chance}</button>
-    <button className='square square8' onClick={()=> gameLogic()}>{chance}</button>
-    <button className='square square9' onClick={()=> gameLogic()}>{chance}</button>
+    {board.map((value, index)=> (
+    <button className='square' key={index} disabled={isDisabled} onClick={()=> gameLogic(index)
+    }>{value}</button>
+    ))}
      </div>
      <div className='btn-container'>
-    <button id='reset' onClick={()=> {resetGame}}>Reset Game</button>
+    <button id='reset' onClick={()=> {resetGame()}}>Reset Game</button>
     </div>
     </div>
   )

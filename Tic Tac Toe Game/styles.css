@@ -5,7 +5,10 @@
 }
 
 
-
+.container {
+  border: 2px solid black;
+  /* min-height: 00px; */
+}
 .board {
   /* border: 2px solid red; */
   display: grid;
@@ -23,28 +26,18 @@
   
 }
 
-.square1 {grid-area: square1}
-.square2 {grid-area: square2}
-.square3 {grid-area: square3}
-.square4 {grid-area: square4}
-.square5 {grid-area: square5}
-.square6 {grid-area: square6}
-.square7 {grid-area: square7}
-.square8 {grid-area: square8}
-.square9 {grid-area: square9}
-
 .square {
   width: 80px;
   height: 80px;
-  border: 2px solid black;
+  border: 1px solid black;
   border-radius: 5px;
-  /* font-weight: bold; */
+  
   font-size: 1.5rem;
 }
 
 .btn-container {
   margin: auto;
-  /* border: 2px solid black; */
+  
   width: 100%;
 }
 #reset {
@@ -53,5 +46,20 @@
   display: block;
   margin: auto;
   
-  /* border: 2px solid black; */
+  
 }
+
+.info {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: -30px;
+  font-weight: bold;
+
+}
+
+.heading {
+  text-align: center;
+  margin-top: 30px;
+}
+
+
